@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Organization Agent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>File Organization Agent</h1>
+            <p>Intelligent file organization for your Windows computer</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" onclick="showTab('scan')">Scan Files</button>
+            <button class="tab-button" onclick="showTab('organize')">Organize</button>
+            <button class="tab-button" onclick="showTab('duplicates')">Duplicates</button>
+            <button class="tab-button" onclick="showTab('recommendations')">Recommendations</button>
+            <button class="tab-button" onclick="showTab('config')">Configuration</button>
+        </nav>
+
+        <!-- Scan Tab -->
+        <div id="scan" class="tab-content active">
+            <div class="card">
+                <h2>Scan Directory</h2>
+                <div class="form-group">
+                    <label for="directory-input">Directory Path:</label>
+                    <input type="text" id="directory-input" placeholder="C:\Users\YourName\Downloads" value="C:\Users\YourName\Downloads">
+                    <button onclick="scanDirectory()" class="btn btn-primary">Scan</button>
+                </div>
+                <div id="scan-results" class="results-container"></div>
+            </div>
+        </div>
+
+        <!-- Organize Tab -->
+        <div id="organize" class="tab-content">
+            <div class="card">
+                <h2>File Organization</h2>
+                <div class="form-group">
+                    <label>Organization Rules:</label>
+                    <div id="rules-container">
+                        <div class="rule-item">
+                            <input type="text" placeholder="Rule name" class="rule-name">
+                            <select class="rule-field">
+                                <option value="extension">File Extension</option>
+                                <option value="path">File Path</option>
+                                <option value="name">File Name</option>
+                                <option value="size">File Size</option>
+                            </select>
+                            <select class="rule-operator">
+                                <option value="equals">Equals</option>
+                                <option value="contains">Contains</option>
+                            </select>
+                            <input type="text" placeholder="Value" class="rule-value">
+                            <select class="rule-action">
+                                <option value="move">Move to</option>
+                                <option value="rename">Rename</option>
+                                <option value="add_tag">Add Tag</option>
+                                <option value="delete">Delete</option>
+                            </select>
+                            <input type="text" placeholder="Action value" class="rule-action-value">
+                            <button onclick="removeRule(this)" class="btn btn-danger">Remove</button>
+                        </div>
+                    </div>
+                    <button onclick="addRule()" class="btn btn-secondary">Add Rule</button>
+                    <button onclick="applyRules()" class="btn btn-primary">Apply Rules</button>
+                </div>
+                <div id="organize-results" class="results-container"></div>
+            </div>
+        </div>
+
+        <!-- Duplicates Tab -->
+        <div id="duplicates" class="tab-content">
+            <div class="card">
+                <h2>Duplicate Files</h2>
+                <button onclick="findDuplicates()" class="btn btn-primary">Find Duplicates</button>
+                <div id="duplicates-results" class="results-container"></div>
+            </div>
+        </div>
+
+        <!-- Recommendations Tab -->
+        <div id="recommendations" class="tab-content">
+            <div class="card">
+                <h2>Organization Recommendations</h2>
+                <button onclick="getRecommendations()" class="btn btn-primary">Get Recommendations</button>
+                <div id="recommendations-results" class="results-container"></div>
+            </div>
+        </div>
+
+        <!-- Configuration Tab -->
+        <div id="config" class="tab-content">
+            <div class="card">
+                <h2>Configuration</h2>
+                <div class="form-group">
+                    <label>Default Categorization Rules:</label>
+                    <div id="config-rules">
+                        <div class="config-category">
+                            <label>Work Keywords:</label>
+                            <input type="text" id="work-keywords" placeholder="work, report, project, business">
+                        </div>
+                        <div class="config-category">
+                            <label>Course Keywords:</label>
+                            <input type="text" id="course-keywords" placeholder="course, lecture, syllabus, assignment">
+                        </div>
+                        <div class="config-category">
+                            <label>Personal Keywords:</label>
+                            <input type="text" id="personal-keywords" placeholder="personal, vacation, photo, family">
+                        </div>
+                        <div class="config-category">
+                            <label>Ski Keywords:</label>
+                            <input type="text" id="ski-keywords" placeholder="ski, snowboard, mountain">
+                        </div>
+                    </div>
+                    <button onclick="saveConfig()" class="btn btn-primary">Save Configuration</button>
+                    <button onclick="loadConfig()" class="btn btn-secondary">Load Configuration</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
