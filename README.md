@@ -548,3 +548,6 @@ CMD ["python", "src/main.py"]
 
 This comprehensive documentation provides users and administrators with all the information needed to successfully install, configure, and operate the File Organization Agent. The system's modular design and extensive documentation ensure that it can be adapted to various use cases and environments while maintaining reliability and performance.
 
+🙋‍♂️ Author
+Ryan Dear
+GitHub | LinkedIn | Email
